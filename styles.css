@@ -1,0 +1,84 @@
+/* Quitar scroll */
+html, body {
+  overflow: hidden;
+  height: 100%;}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.pantalla {
+  background-color: #0f3a23;
+  color: #dbf7d0;
+  padding: 25px;
+  width: 700px;
+  height: 450px;
+  border: 3px solid #1a4d2e;
+  border-radius: 8px;
+  font-family: "Silkscreen", monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* BLOQUE SUPERIOR */
+.top-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titulo {
+  font-size: 18px;
+  margin: 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+/* BLOQUE CENTRAL */
+.perfil-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* TEXTO PARPADEANTE */
+.continuar {
+  font-size: 10px;
+  animation: parpadeo 1s infinite;
+  margin-top: -10px;
+  font-size: 17px;
+}
+
+/* MENÚ */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.menu .opcion {
+  margin: 4px 0;
+}
+
+.menu .activa {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ANIMACIÓN */
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
