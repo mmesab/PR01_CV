@@ -1,0 +1,89 @@
+{
+  "personal_info": {
+    "nombre": "",
+    "apellidos": "",
+    "telefono1": "",
+    "email_profesional1": "",
+    "ciudad": "",
+    "pais": "",
+    "disponibilidad": ""
+  },
+
+  "professional_profile": {
+    "profesion": "",
+    "resumen": ""
+  },
+
+  "work_experience": [
+    {
+      "puesto": "",
+      "fecha_inicio": "",
+      "trabajo_actual": false,
+      "orden": 1
+    }
+  ],
+
+  "education": [
+    {
+      "titulo": "",
+      "fecha_inicio": "",
+      "en_curso": false,
+      "orden": 1
+    }
+  ],
+
+  "complementary_training": [
+    {
+      "tipo": "",
+      "nombre": "",
+      "orden": 1
+    }
+  ],
+
+  "skills": [
+    {
+      "tipo": "",
+      "nombre": "",
+      "orden": 1
+    }
+  ],
+
+  "languages": [
+    {
+      "idioma": "",
+      "nivel": "",
+      "orden": 1
+    }
+  ],
+
+  "projects": [
+    {
+      "nombre": "",
+      "orden": 1
+    }
+  ],
+
+  "achievements": [
+    {
+      "titulo": "",
+      "tipo": "",
+      "orden": 1
+    }
+  ],
+
+  "volunteering": [
+    {
+      "organizacion": "",
+      "funcion": "",
+      "en_curso": false,
+      "orden": 1
+    }
+  ],
+
+  "interests": [
+    {
+      "nombre": "",
+      "orden": 1
+    }
+  ]
+}

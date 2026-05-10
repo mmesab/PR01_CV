@@ -1,53 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> CV Interactivo - Maite Mesa  </title>
+  <title>CV Interactivo - Maite Mesa</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<audio id="bg-music" src="./sounds/music.mp3" autoplay loop></audio>
 
+<audio id="bg-music" src="./sounds/music.mp3" loop></audio>
 
-  <div class="container">
-    <div class="pantalla">
+<div id="overlay-start">PULSA CUALQUIER TECLA PARA EMPEZAR</div>
 
-    BLOQUE SUPERIOR: INFO 
+<div class="container">
+
+  <!-- CONSOLA EXTERIOR -->
+  <div class="consola-outer">
+    <img src="./img/consola.png" class="consola-bg" alt="consola retro">
+
+    <!-- PANTALLA INTERNA -->
+    <div class="pantalla crt">
+
+      <!-- BLOQUE SUPERIOR -->
       <div class="top-info">
-        <h2 class="titulo"> Maite Mesa _CV</h2>
-        <div class="stats">
-          <span class="vida">♥ 666</span>
-          <span class="nivel">★ NIVEL 3: estudiante</span>
-          <span class="progreso">100%</span>
+
+        <div class="top-left">
+          <h1 class="titulo">Maite Mesa _CV</h1>
+          <div class="stats">
+            <span class="vida">♥ ♥ ♥</span>
+            <span class="nivel">★ NIVEL 2: EXPERIENCIA</span>
+            <span class="progreso">100%</span>
+          </div>
         </div>
+
+        <div class="avatar-container">
+          <img src="./img/avatar.png" alt="avatar retro" class="avatar-retro">
+        </div>
+
       </div>
 
-    <!-- BLOQUE CENTRAL: PERFIL -->
-    <div class="perfil-info">
-      <p>> NOMBRE: Maite Mesa Badiola</p>
-      <p>> ROL: desarrolladora web</p>
-      <p>> NIVEL: 5</p>
-    </div>
+      <!-- SECCIONES -->
+      <div class="seccion activa" id="perfil"></div>
+      <div class="seccion" id="experiencia"></div>
+      <div class="seccion" id="educacion"></div>
+      <div class="seccion" id="skills"></div>
+      <div class="seccion" id="idiomas"></div>
+      <div class="seccion" id="formacion_no_reglada"></div>
+      <div class="seccion" id="proyectos"></div>
+      <div class="seccion" id="logros"></div>
+      <div class="seccion" id="voluntariado"></div>
+      <div class="seccion" id="intereses"></div>
 
-    <p class="continuar">PULSA "A" PARA CONTINUAR...</p>
+      <!-- MENÚ -->
+      <div class="menu horizontal">
+        <p class="opcion">PERFIL</p>
+        <p class="opcion">EXPERIENCIA</p>
+        <p class="opcion">EDUCACIÓN</p>
+        <p class="opcion">SKILLS</p>
+        <p class="opcion">IDIOMAS</p>
+        <p class="opcion">FORMACIÓN</p>
+        <p class="opcion">PROYECTOS</p>
+        <p class="opcion">LOGROS</p>
+        <p class="opcion">VOLUNTARIADO</p>
+        <p class="opcion">INTERESES</p>
+      </div>
 
-    <!-- BLOQUE INFERIOR: MENÚ -->
-    <div class="menu">
-      <p class="opcion activa">★ PERFIL</p>
-      <p class="opcion">> EXPERIENCIA</p>
-      <p class="opcion">> EDUCACIÓN</p>
-      <p class="opcion">> SKILLS</p>
-    </div>
+    </div> <!-- FIN PANTALLA -->
 
+  </div> <!-- FIN CONSOLA -->
 
-  </div>
-  </div>
+</div> <!-- FIN CONTAINER -->
 
-  
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

@@ -1,35 +1,171 @@
 /* Quitar scroll */
 html, body {
   overflow: hidden;
-  height: 100%;}
+  height: 100%;
+}
+
+/* PANTALLA DE INICIO - PULSAR TECLA */
+#overlay-start {
+  position: fixed;
+  inset: 0;
+  background: #0f3a23;
+  color: #dbf7d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-family: "Silkscreen";
+  z-index: 9999;
+}
 
 .container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+
+/* ============================
+      CONSOLA A PANTALLA COMPLETA (COVER)
+============================ */
+.consola-outer {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
+.consola-bg {
+  height: 100vh;   /* ⭐ La consola ocupa todo el alto */
+  width: auto;     /* ⭐ Mantiene proporción */
+  object-fit: contain;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+/* ============================
+      PANTALLA INTERNA RESPONSIVE
+============================ */
 .pantalla {
+  position: absolute;
+
+  /* ⭐ CENTRADO PERFECTO */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* ⭐ LIMITADA POR ALTURA DEL HUECO */
+  height: 46%;        /* ← AJUSTA ESTE VALOR FINO */
+  max-height: 46%;
+  aspect-ratio: 4 / 3;
+
+  /* ⭐ El ancho se calcula solo gracias al aspect-ratio */
+  width: auto;
+
   background-color: #0f3a23;
   color: #dbf7d0;
-  padding: 25px;
-  width: 700px;
-  height: 450px;
+  padding: 1%;
   border: 3px solid #1a4d2e;
   border-radius: 8px;
-  font-family: "Silkscreen", monospace;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  overflow: hidden;
+  font-family: "Silkscreen";
 }
 
-/* BLOQUE SUPERIOR */
+
+
+
+
+
+/* CRT */
+.pantalla::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  
+
+  background: repeating-linear-gradient(
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    rgba(0, 0, 0, 0) 2px
+  );
+
+  animation: crt-scan 6s linear infinite;
+}
+
+.pantalla::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: rgba(0, 0, 0, 0.05);
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* CRT Animaciones */
+@keyframes crt-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.15; }
+  50% { opacity: 0.05; }
+  100% { opacity: 0.15; }
+}
+
+/* CONTENEDOR SUPERIOR */
 .top-info {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* BLOQUE IZQUIERDO (texto) */
+.top-left {
+  display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 2px;
+  text-align: left;
+}
+
+/* AVATAR RETRO */
+.avatar-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 1vh;
+  background: #0a2c1b;
+  padding: 4px;
+  image-rendering: pixelated;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-retro {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border-radius: 10px;
 }
 
 .titulo {
@@ -37,10 +173,30 @@ html, body {
   margin: 0;
 }
 
+/* STATS RETRO */
 .stats {
   display: flex;
-  justify-content: space-between;
-  font-size: 12px;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+  color: #9ac89c;
+  text-shadow: 0 0 4px #1a4d2e;
+  letter-spacing: 1px;
+}
+
+.stats .vida {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.stats .nivel {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.stats .progreso {
+  color: #9ac89c;
 }
 
 /* BLOQUE CENTRAL */
@@ -53,30 +209,94 @@ html, body {
 
 /* TEXTO PARPADEANTE */
 .continuar {
-  font-size: 10px;
+  font-size: 17px;
   animation: parpadeo 1s infinite;
   margin-top: -10px;
-  font-size: 17px;
 }
 
-/* MENÚ */
+/* CONTENEDOR DE SECCIÓN CON SCROLL RETRO */
+.seccion {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* SCROLL RETRO */
+.seccion::-webkit-scrollbar {
+  width: 8px;
+}
+
+.seccion::-webkit-scrollbar-track {
+  background: #0b2a1a;
+  border-left: 2px solid #1a4d2e;
+}
+
+.seccion::-webkit-scrollbar-thumb {
+  background: #3fa36b;
+  border: 1px solid #dbf7d0;
+}
+
+.seccion::-webkit-scrollbar-thumb:hover {
+  background: #56c98a;
+}
+
+/* SECCIONES */
+.seccion.activa {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* MENÚ VERTICAL (no usado) */
 .menu {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 14px;
+  gap: 6px;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
 .menu .opcion {
-  margin: 4px 0;
+  padding-left: 14px;
+  color: #9ac89c;
+  transition: all 0.15s ease;
 }
 
 .menu .activa {
   color: #ffffff;
   font-weight: bold;
+  padding-left: 0;
 }
 
-/* ANIMACIÓN */
+/* MENÚ HORIZONTAL DESLIZANTE */
+.menu.horizontal {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 90%;
+}
+
+.menu.horizontal .opcion {
+  color: #9ac89c;
+  transition: color 0.2s ease;
+}
+
+.menu.horizontal .activa {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ANIMACIÓN PARPADEO */
 @keyframes parpadeo {
   0% { opacity: 1; }
   50% { opacity: 0; }
